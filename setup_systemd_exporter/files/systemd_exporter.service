@@ -1,0 +1,9 @@
+[Unit]
+Description=Prometheus systemd exporter
+After=network.target
+[Service]
+User=systemd_exporter
+ExecStart=/usr/local/bin/systemd_exporter-0.6.0.linux-amd64/systemd_exporter --web.listen-address=:9558
+Restart=always
+[Install]
+WantedBy=multi-user.target
