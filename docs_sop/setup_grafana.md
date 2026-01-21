@@ -142,6 +142,7 @@ So, we have to modify the Grafana init file as below
 vim /etc/grafana/grafana.ini
 ```
 
+Paste the following lines of code:
 
 ```
     [server]
