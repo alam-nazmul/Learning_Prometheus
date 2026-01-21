@@ -1,0 +1,37 @@
+---
+- name: Download the TAR file for node exporter on client VM
+  get_url:
+    url: https://github.com/prometheus/node_exporter/releases/download/v1.9.1/node_exporter-1.9.1.linux-amd64.tar.gz
+    dest: /tmp/node_exporter-1.9.1.linux-amd64.tar.gz 
+    mode: '0644'
+
+- name: Create the node_exporter user with no bash
+  ansible.builtin.user:
+    name: node_exporter
+    shell: /sbin/nologin
+    system: yes
+    create_home: no
+
+- name: Extract the node_exporter tar file
+  ansible.builtin.unarchive:
+    src: /tmp/node_exporter-1.9.1.linux-amd64.tar.gz
+    dest: /usr/local/bin/
+    remote_src: yes
+    owner: node_exporter
+    group: node_exporter
+    mode: '0755'
+
+- name: Create the daemon file for node_exporter
+  ansible.builtin.copy:
+    src: ../files/node_exporter.service
+    dest: /etc/systemd/system/node_exporter.service
+    mode: '0644'
+  notify:
+    - Restart the node_exporter service
+
+- name: Start and enable the node_exporter service
+  ansible.builtin.systemd:
+    name: node_exporter
+    state: restarted
+    enabled: yes
+    daemon_reload: yes

@@ -1,0 +1,13 @@
+---
+# handlers file for setup_node_exporter
+- name: Restart the node_exporter service
+  ansible.builtin.systemd:
+    name: node_exporter
+    state: restarted
+    enabled: yes
+
+- name: Restart the UFW services
+  systemd:
+    name: ufw
+    state: restarted
+    enabled: yes

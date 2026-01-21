@@ -1,0 +1,20 @@
+---
+- name: Allow SSH port of UFW
+  ufw:
+    rule: allow
+    port: 22
+    proto: tcp
+    state: enabled
+    comment: "Allow SSH connections"
+  notify:
+    - Restart the UFW services
+
+- name: Allow node_exporter port through the UFW
+  ufw:
+    rule: allow
+    port: 9100
+    proto: tcp
+    state: enabled
+    comment: "Allow node_exporter metrics port"
+  notify:
+    - Restart the UFW services
