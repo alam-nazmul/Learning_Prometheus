@@ -1,0 +1,14 @@
+#SPDX-License-Identifier: MIT-0
+---
+# handlers file for install_node_exporter
+- name: Restart the systemd_exporter service
+  ansible.builtin.systemd:
+    name: systemd_exporter
+    state: restarted
+    enabled: yes
+
+- name: Restart the UFW services
+  systemd:
+    name: ufw
+    state: restarted
+    enabled: yes

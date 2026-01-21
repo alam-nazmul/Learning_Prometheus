@@ -1,0 +1,8 @@
+#SPDX-License-Identifier: MIT-0
+---
+# tasks file for install_node_exporter
+- name: Configure the node exporter
+  import_tasks: playbook_for_install_node.yaml
+
+- name: Configure UFW for node exporter
+  import_tasks: playbook_for_ufw_configuration.yaml
