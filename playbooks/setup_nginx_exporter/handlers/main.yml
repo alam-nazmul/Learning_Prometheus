@@ -1,0 +1,19 @@
+---
+# handlers file for setup_nginx_exporter
+- name: Enable and Start Nginx exporter service
+  systemd:
+    name: nginx-prometheus-exporter.service
+    enabled: yes
+    status: restarted
+
+- name: Enable and Start the Nginx service
+  systemd:
+    name: nginx
+    enabled: yes
+    status: restarted
+
+- name: Restart the UFW services
+  systemd:
+    name: ufw
+    enabled: yes
+    status: restarted

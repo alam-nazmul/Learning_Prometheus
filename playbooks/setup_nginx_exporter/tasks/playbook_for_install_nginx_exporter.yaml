@@ -1,0 +1,45 @@
+---
+- name: Create the stub status file
+  copy:
+    src: ../files/stub_status.conf
+    dest: /etc/nginx/conf.d/
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Download the TAR file for nginx exporter on client VM
+  get_url:
+    url: https://github.com/nginxinc/nginx-prometheus-exporter/releases/download/v1.3.0/nginx-prometheus-exporter_1.3.0_linux_amd64.tar.gz
+    dest: /tmp/nginx-prometheus-exporter.tar.gz
+    mode: '0644'
+
+- name: Create the nginx_exporter user with no bash
+  ansible.builtin.user:
+    name: nginx_exporter
+    shell: /sbin/nologin
+    system: yes
+    create_home: no
+
+- name: Extract the nginx_exporter tar file
+  ansible.builtin.unarchive:
+    src: /tmp/nginx-prometheus-exporter.tar.gz
+    dest: /usr/local/bin/
+    remote_src: yes
+    owner: nginx_exporter
+    group: nginx_exporter
+    mode: '0755'
+
+- name: Create the daemon file for systemd_exporter
+  ansible.builtin.copy:
+    src: ../files/nginx-prometheus-exporter.service
+    dest: /etc/systemd/system/nginx-prometheus-exporter.service
+    mode: '0644'
+  notify:
+    - Enable and Start Nginx exporter service
+
+- name: Start and enable the nginx_exporter service
+  ansible.builtin.systemd:
+    name: nginx-prometheus-exporter
+    state: restarted
+    enabled: yes
+    daemon_reload: yes

@@ -1,0 +1,7 @@
+---
+# tasks file for setup_nginx_exporter
+- name: Configure the nginx exporter
+  import_tasks: playbook_for_install_nginx_exporter.yaml
+  
+- name: Configure UFW for node exporter
+  import_tasks: playbook_for_ufw_configuration.yaml
