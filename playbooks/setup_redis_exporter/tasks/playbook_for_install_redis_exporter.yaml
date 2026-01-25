@@ -1,0 +1,38 @@
+---
+- name: Download the TAR file for Redis exporter on client VM
+  get_url:
+    url: https://github.com/oliver006/redis_exporter/releases/download/v1.55.0/redis_exporter-v1.55.0.linux-amd64.tar.gz
+    dest: /tmp/redis_exporter.tar.gz
+    mode: "0644"
+
+- name: Create the redis_exporter user with no bash
+  user:
+    name: redis_exporter
+    create_home: no
+    shell: /sbin/nologin
+    system: yes
+
+- name: Extract the archive file, modify the ownership permission and place it an appropriate place
+  ansible.builtin.unarchive:
+    src: /tmp/redis_exporter.tar.gz
+    dest: /usr/local/bin/
+    remote_src: yes
+    owner: redis_exporter
+    group: redis_exporter
+    mode: "0744"
+
+- name: Create a daemon file for redis exporter
+  copy:
+    src: ../files/redis_exporter.service
+    dest: /etc/systemd/system/redis_exporter.service
+    owner: root
+    group: root
+    mode: "0644"
+  notify: Enable and Restart the Redis exporter service
+
+- name: Start and enable the Redis exporter service
+  ansible.builtin.systemd:
+    name: redis_exporter
+    state: restarted
+    enabled: yes
+    daemon_reload: yes

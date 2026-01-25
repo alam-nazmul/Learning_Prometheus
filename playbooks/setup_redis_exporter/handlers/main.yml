@@ -1,0 +1,13 @@
+---
+# handlers file for setup_redis_exporter
+- name: Enable and Restart the Redis exporter service
+  systemd:
+    name: redis_exporter
+    status: restarted
+    enabled: yes
+
+- name: Restart the UFW services
+  systemd:
+    name: ufw
+    enabled: yes
+    status: restarted

@@ -1,0 +1,18 @@
+---
+- name: Allow SSH port on UFW
+  ufw:
+    rule: allow
+    port: 22
+    proto: tcp
+    state: enabled
+    comment: "Allow SSH connection"
+  notify: Restart the UFW services
+
+- name: Allow redis_exporter port through the UFW
+  ufw:
+    rule: allow
+    port: 6379
+    proto: tcp
+    state: enabled
+    comment: "Allow redis exporter mactrics port"
+  notify: Restart the UFW services

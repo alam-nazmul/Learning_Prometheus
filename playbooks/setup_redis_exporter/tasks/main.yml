@@ -1,0 +1,8 @@
+---
+# tasks file for setup_redis_exporter
+- name: Configure the redis exporter
+  import_tasks: playbook_for_install_redis_exporter.yaml
+
+- name: Configure UFW for node exporter
+  import_tasks: playbook_for_ufw_configuration.yaml
+  

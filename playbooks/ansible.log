@@ -1,0 +1,145 @@
+2026-01-25 15:10:16,288 p=128309 u=nazmul n=ansible | ERROR! unexpected parameter type in action: <class 'ansible.parsing.yaml.objects.AnsibleSequence'>
+
+The error appears to be in '/home/jarvis/github/Learning_Prometheus/playbooks/setup_redis_exporter/tasks/playbook_for_install_redis_exporter.yaml': line 8, column 3, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+- name: Create the redis_exporter user with no bash
+  ^ here
+
+2026-01-25 15:10:59,375 p=129190 u=nazmul n=ansible | PLAY [Introducing the playbook for installing and configuring node exporter] *********************************************************************
+2026-01-25 15:10:59,384 p=129190 u=nazmul n=ansible | TASK [Gathering Facts] ***************************************************************************************************************************
+2026-01-25 15:11:05,781 p=129190 u=nazmul n=ansible | ok: [172.16.7.131]
+2026-01-25 15:11:05,800 p=129190 u=nazmul n=ansible | TASK [setup_redis_exporter : Download the TAR file for Redis exporter on client VM] **************************************************************
+2026-01-25 15:11:09,357 p=129190 u=nazmul n=ansible | changed: [172.16.7.131]
+2026-01-25 15:11:09,388 p=129190 u=nazmul n=ansible | TASK [setup_redis_exporter : Create the redis_exporter user with no bash] ************************************************************************
+2026-01-25 15:11:10,920 p=129190 u=nazmul n=ansible | changed: [172.16.7.131]
+2026-01-25 15:11:10,944 p=129190 u=nazmul n=ansible | TASK [setup_redis_exporter : Extract the archive file, modify the ownership permission and place it an appropriate place] ************************
+2026-01-25 15:11:11,150 p=129190 u=nazmul n=ansible | An exception occurred during task execution. To see the full traceback, use -vvv. The error was: If you are using a module and expect the file to exist on the remote, see the remote_src option
+2026-01-25 15:11:11,151 p=129190 u=nazmul n=ansible | fatal: [172.16.7.131]: FAILED! => {"changed": false, "msg": "Could not find or access '/tmp/redis_exporter.tar.gz' on the Ansible Controller.\nIf you are using a module and expect the file to exist on the remote, see the remote_src option"}
+2026-01-25 15:11:11,152 p=129190 u=nazmul n=ansible | PLAY RECAP ***************************************************************************************************************************************
+2026-01-25 15:11:11,152 p=129190 u=nazmul n=ansible | 172.16.7.131               : ok=3    changed=2    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2026-01-25 15:11:57,007 p=129767 u=nazmul n=ansible | PLAY [Introducing the playbook for installing and configuring node exporter] *********************************************************************
+2026-01-25 15:11:57,017 p=129767 u=nazmul n=ansible | TASK [Gathering Facts] ***************************************************************************************************************************
+2026-01-25 15:12:00,920 p=129767 u=nazmul n=ansible | ok: [172.16.7.131]
+2026-01-25 15:12:00,939 p=129767 u=nazmul n=ansible | TASK [setup_redis_exporter : Download the TAR file for Redis exporter on client VM] **************************************************************
+2026-01-25 15:12:03,049 p=129767 u=nazmul n=ansible | ok: [172.16.7.131]
+2026-01-25 15:12:03,057 p=129767 u=nazmul n=ansible | TASK [setup_redis_exporter : Create the redis_exporter user with no bash] ************************************************************************
+2026-01-25 15:12:04,268 p=129767 u=nazmul n=ansible | ok: [172.16.7.131]
+2026-01-25 15:12:04,295 p=129767 u=nazmul n=ansible | TASK [setup_redis_exporter : Extract the archive file, modify the ownership permission and place it an appropriate place] ************************
+2026-01-25 15:12:07,392 p=129767 u=nazmul n=ansible | changed: [172.16.7.131]
+2026-01-25 15:12:07,417 p=129767 u=nazmul n=ansible | TASK [setup_redis_exporter : Create a daemon file for redis exporter] ****************************************************************************
+2026-01-25 15:12:09,414 p=129767 u=nazmul n=ansible | changed: [172.16.7.131]
+2026-01-25 15:12:09,436 p=129767 u=nazmul n=ansible | TASK [setup_redis_exporter : Enable and Restart the Redis exporter service] **********************************************************************
+2026-01-25 15:12:14,049 p=129767 u=nazmul n=ansible | changed: [172.16.7.131]
+2026-01-25 15:12:14,058 p=129767 u=nazmul n=ansible | TASK [setup_redis_exporter : Allow SSH port on UFW] **********************************************************************************************
+2026-01-25 15:12:17,192 p=129767 u=nazmul n=ansible | changed: [172.16.7.131]
+2026-01-25 15:12:17,200 p=129767 u=nazmul n=ansible | TASK [setup_redis_exporter : Allow redis_exporter port through the UFW] **************************************************************************
+2026-01-25 15:12:19,963 p=129767 u=nazmul n=ansible | changed: [172.16.7.131]
+2026-01-25 15:12:20,013 p=129767 u=nazmul n=ansible | RUNNING HANDLER [setup_redis_exporter : Enable and Restart the Redis exporter service] ***********************************************************
+2026-01-25 15:12:21,464 p=129767 u=nazmul n=ansible | fatal: [172.16.7.131]: FAILED! => {"changed": false, "msg": "Unsupported parameters for (systemd) module: status. Supported parameters include: daemon_reexec, daemon_reload, enabled, force, masked, name, no_block, scope, state (daemon-reexec, daemon-reload, service, unit)."}
+2026-01-25 15:12:21,467 p=129767 u=nazmul n=ansible | PLAY RECAP ***************************************************************************************************************************************
+2026-01-25 15:12:21,468 p=129767 u=nazmul n=ansible | 172.16.7.131               : ok=8    changed=5    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2026-01-25 15:14:35,638 p=131106 u=nazmul n=ansible | PLAY [Introducing the playbook for installing and configuring node exporter] *********************************************************************
+2026-01-25 15:14:35,648 p=131106 u=nazmul n=ansible | TASK [Gathering Facts] ***************************************************************************************************************************
+2026-01-25 15:14:41,281 p=131106 u=nazmul n=ansible | ok: [172.16.7.131]
+2026-01-25 15:14:41,300 p=131106 u=nazmul n=ansible | TASK [setup_redis_exporter : Download the TAR file for Redis exporter on client VM] **************************************************************
+2026-01-25 15:14:43,531 p=131106 u=nazmul n=ansible | ok: [172.16.7.131]
+2026-01-25 15:14:43,555 p=131106 u=nazmul n=ansible | TASK [setup_redis_exporter : Create the redis_exporter user with no bash] ************************************************************************
+2026-01-25 15:14:44,798 p=131106 u=nazmul n=ansible | ok: [172.16.7.131]
+2026-01-25 15:14:44,828 p=131106 u=nazmul n=ansible | TASK [setup_redis_exporter : Extract the archive file, modify the ownership permission and place it an appropriate place] ************************
+2026-01-25 15:14:45,909 p=131106 u=nazmul n=ansible | An exception occurred during task execution. To see the full traceback, use -vvv. The error was: NoneType: None
+2026-01-25 15:14:45,910 p=131106 u=nazmul n=ansible | fatal: [172.16.7.131]: FAILED! => {"changed": false, "msg": "dest '/usr/local/bin/redis_exporter' must be an existing dir"}
+2026-01-25 15:14:45,914 p=131106 u=nazmul n=ansible | PLAY RECAP ***************************************************************************************************************************************
+2026-01-25 15:14:45,915 p=131106 u=nazmul n=ansible | 172.16.7.131               : ok=3    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2026-01-25 15:19:47,429 p=133516 u=nazmul n=ansible | PLAY [Introducing the playbook for installing and configuring node exporter] *********************************************************************
+2026-01-25 15:19:47,438 p=133516 u=nazmul n=ansible | TASK [Gathering Facts] ***************************************************************************************************************************
+2026-01-25 15:19:53,470 p=133516 u=nazmul n=ansible | ok: [172.16.7.131]
+2026-01-25 15:19:53,493 p=133516 u=nazmul n=ansible | TASK [setup_redis_exporter : Download the TAR file for Redis exporter on client VM] **************************************************************
+2026-01-25 15:19:55,717 p=133516 u=nazmul n=ansible | ok: [172.16.7.131]
+2026-01-25 15:19:55,744 p=133516 u=nazmul n=ansible | TASK [setup_redis_exporter : Create the redis_exporter user with no bash] ************************************************************************
+2026-01-25 15:19:56,978 p=133516 u=nazmul n=ansible | ok: [172.16.7.131]
+2026-01-25 15:19:57,001 p=133516 u=nazmul n=ansible | TASK [setup_redis_exporter : Extract the archive file, modify the ownership permission and place it an appropriate place] ************************
+2026-01-25 15:20:00,319 p=133516 u=nazmul n=ansible | ok: [172.16.7.131]
+2026-01-25 15:20:00,345 p=133516 u=nazmul n=ansible | TASK [setup_redis_exporter : Create a daemon file for redis exporter] ****************************************************************************
+2026-01-25 15:20:02,697 p=133516 u=nazmul n=ansible | changed: [172.16.7.131]
+2026-01-25 15:20:02,724 p=133516 u=nazmul n=ansible | TASK [setup_redis_exporter : Enable and Restart the Redis exporter service] **********************************************************************
+2026-01-25 15:20:06,203 p=133516 u=nazmul n=ansible | changed: [172.16.7.131]
+2026-01-25 15:20:06,213 p=133516 u=nazmul n=ansible | TASK [setup_redis_exporter : Allow SSH port on UFW] **********************************************************************************************
+2026-01-25 15:20:08,969 p=133516 u=nazmul n=ansible | ok: [172.16.7.131]
+2026-01-25 15:20:08,997 p=133516 u=nazmul n=ansible | TASK [setup_redis_exporter : Allow redis_exporter port through the UFW] **************************************************************************
+2026-01-25 15:20:12,986 p=133516 u=nazmul n=ansible | ok: [172.16.7.131]
+2026-01-25 15:20:13,048 p=133516 u=nazmul n=ansible | RUNNING HANDLER [setup_redis_exporter : Enable and Restart the Redis exporter service] ***********************************************************
+2026-01-25 15:20:14,661 p=133516 u=nazmul n=ansible | fatal: [172.16.7.131]: FAILED! => {"changed": false, "msg": "Unsupported parameters for (systemd) module: status. Supported parameters include: daemon_reexec, daemon_reload, enabled, force, masked, name, no_block, scope, state (daemon-reexec, daemon-reload, service, unit)."}
+2026-01-25 15:20:14,664 p=133516 u=nazmul n=ansible | PLAY RECAP ***************************************************************************************************************************************
+2026-01-25 15:20:14,665 p=133516 u=nazmul n=ansible | 172.16.7.131               : ok=8    changed=2    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2026-01-25 15:33:25,385 p=139449 u=nazmul n=ansible | PLAY [Introducing the playbook for installing and configuring node exporter] *********************************************************************
+2026-01-25 15:33:25,394 p=139449 u=nazmul n=ansible | TASK [Gathering Facts] ***************************************************************************************************************************
+2026-01-25 15:33:31,738 p=139449 u=nazmul n=ansible | ok: [172.16.7.131]
+2026-01-25 15:33:31,757 p=139449 u=nazmul n=ansible | TASK [setup_redis_exporter : Download the TAR file for Redis exporter on client VM] **************************************************************
+2026-01-25 15:33:34,065 p=139449 u=nazmul n=ansible | ok: [172.16.7.131]
+2026-01-25 15:33:34,080 p=139449 u=nazmul n=ansible | TASK [setup_redis_exporter : Create the redis_exporter user with no bash] ************************************************************************
+2026-01-25 15:33:35,451 p=139449 u=nazmul n=ansible | ok: [172.16.7.131]
+2026-01-25 15:33:35,478 p=139449 u=nazmul n=ansible | TASK [setup_redis_exporter : Extract the archive file, modify the ownership permission and place it an appropriate place] ************************
+2026-01-25 15:33:38,727 p=139449 u=nazmul n=ansible | changed: [172.16.7.131]
+2026-01-25 15:33:38,760 p=139449 u=nazmul n=ansible | TASK [setup_redis_exporter : Create a daemon file for redis exporter] ****************************************************************************
+2026-01-25 15:33:41,009 p=139449 u=nazmul n=ansible | changed: [172.16.7.131]
+2026-01-25 15:33:41,026 p=139449 u=nazmul n=ansible | TASK [setup_redis_exporter : Enable and Restart the Redis exporter service] **********************************************************************
+2026-01-25 15:33:44,215 p=139449 u=nazmul n=ansible | changed: [172.16.7.131]
+2026-01-25 15:33:44,223 p=139449 u=nazmul n=ansible | TASK [setup_redis_exporter : Allow SSH port on UFW] **********************************************************************************************
+2026-01-25 15:33:48,306 p=139449 u=nazmul n=ansible | ok: [172.16.7.131]
+2026-01-25 15:33:48,315 p=139449 u=nazmul n=ansible | TASK [setup_redis_exporter : Allow redis_exporter port through the UFW] **************************************************************************
+2026-01-25 15:33:51,275 p=139449 u=nazmul n=ansible | ok: [172.16.7.131]
+2026-01-25 15:33:51,320 p=139449 u=nazmul n=ansible | RUNNING HANDLER [setup_redis_exporter : Enable and Restart the Redis exporter service] ***********************************************************
+2026-01-25 15:33:52,846 p=139449 u=nazmul n=ansible | fatal: [172.16.7.131]: FAILED! => {"changed": false, "msg": "Unsupported parameters for (systemd) module: status. Supported parameters include: daemon_reexec, daemon_reload, enabled, force, masked, name, no_block, scope, state (daemon-reexec, daemon-reload, service, unit)."}
+2026-01-25 15:33:52,850 p=139449 u=nazmul n=ansible | PLAY RECAP ***************************************************************************************************************************************
+2026-01-25 15:33:52,851 p=139449 u=nazmul n=ansible | 172.16.7.131               : ok=8    changed=3    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2026-01-25 15:34:48,238 p=139994 u=nazmul n=ansible | PLAY [Introducing the playbook for installing and configuring node exporter] *********************************************************************
+2026-01-25 15:34:48,247 p=139994 u=nazmul n=ansible | TASK [Gathering Facts] ***************************************************************************************************************************
+2026-01-25 15:34:51,853 p=139994 u=nazmul n=ansible | ok: [172.16.7.131]
+2026-01-25 15:34:51,872 p=139994 u=nazmul n=ansible | TASK [setup_redis_exporter : Download the TAR file for Redis exporter on client VM] **************************************************************
+2026-01-25 15:34:53,932 p=139994 u=nazmul n=ansible | ok: [172.16.7.131]
+2026-01-25 15:34:53,953 p=139994 u=nazmul n=ansible | TASK [setup_redis_exporter : Create the redis_exporter user with no bash] ************************************************************************
+2026-01-25 15:34:55,253 p=139994 u=nazmul n=ansible | ok: [172.16.7.131]
+2026-01-25 15:34:55,279 p=139994 u=nazmul n=ansible | TASK [setup_redis_exporter : Extract the archive file, modify the ownership permission and place it an appropriate place] ************************
+2026-01-25 15:34:58,763 p=139994 u=nazmul n=ansible | ok: [172.16.7.131]
+2026-01-25 15:34:58,789 p=139994 u=nazmul n=ansible | TASK [setup_redis_exporter : Create a daemon file for redis exporter] ****************************************************************************
+2026-01-25 15:35:00,931 p=139994 u=nazmul n=ansible | ok: [172.16.7.131]
+2026-01-25 15:35:00,952 p=139994 u=nazmul n=ansible | TASK [setup_redis_exporter : Enable and Restart the Redis exporter service] **********************************************************************
+2026-01-25 15:35:04,467 p=139994 u=nazmul n=ansible | changed: [172.16.7.131]
+2026-01-25 15:35:04,488 p=139994 u=nazmul n=ansible | TASK [setup_redis_exporter : Allow SSH port on UFW] **********************************************************************************************
+2026-01-25 15:35:07,684 p=139994 u=nazmul n=ansible | ok: [172.16.7.131]
+2026-01-25 15:35:07,714 p=139994 u=nazmul n=ansible | TASK [setup_redis_exporter : Allow redis_exporter port through the UFW] **************************************************************************
+2026-01-25 15:35:10,662 p=139994 u=nazmul n=ansible | ok: [172.16.7.131]
+2026-01-25 15:35:10,716 p=139994 u=nazmul n=ansible | PLAY RECAP ***************************************************************************************************************************************
+2026-01-25 15:35:10,716 p=139994 u=nazmul n=ansible | 172.16.7.131               : ok=8    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2026-01-25 15:43:29,369 p=144066 u=nazmul n=ansible | PLAY [Introducing the playbook for installing and configuring node exporter] *********************************************************************
+2026-01-25 15:43:29,378 p=144066 u=nazmul n=ansible | TASK [Gathering Facts] ***************************************************************************************************************************
+2026-01-25 15:43:29,773 p=144066 u=nazmul n=ansible |  [ERROR]: User interrupted execution
+
+2026-01-25 15:47:30,081 p=145514 u=nazmul n=ansible | PLAY [Introducing the playbook for installing and configuring node exporter] *********************************************************************
+2026-01-25 15:47:30,090 p=145514 u=nazmul n=ansible | TASK [Gathering Facts] ***************************************************************************************************************************
+2026-01-25 15:47:36,476 p=145514 u=nazmul n=ansible | ok: [172.16.7.131]
+2026-01-25 15:47:36,495 p=145514 u=nazmul n=ansible | TASK [setup_redis_exporter : Download the TAR file for Redis exporter on client VM] **************************************************************
+2026-01-25 15:47:39,223 p=145514 u=nazmul n=ansible | [WARNING]: Module remote_tmp /root/.ansible/tmp did not exist and was created with a mode of 0700, this may cause issues when running as another
+user. To avoid this, create the remote_tmp dir with the correct permissions manually
+
+2026-01-25 15:47:39,223 p=145514 u=nazmul n=ansible | changed: [172.16.7.131]
+2026-01-25 15:47:39,246 p=145514 u=nazmul n=ansible | TASK [setup_redis_exporter : Create the redis_exporter user with no bash] ************************************************************************
+2026-01-25 15:47:40,577 p=145514 u=nazmul n=ansible | changed: [172.16.7.131]
+2026-01-25 15:47:40,600 p=145514 u=nazmul n=ansible | TASK [setup_redis_exporter : Extract the archive file, modify the ownership permission and place it an appropriate place] ************************
+2026-01-25 15:47:44,206 p=145514 u=nazmul n=ansible | changed: [172.16.7.131]
+2026-01-25 15:47:44,236 p=145514 u=nazmul n=ansible | TASK [setup_redis_exporter : Create a daemon file for redis exporter] ****************************************************************************
+2026-01-25 15:47:46,443 p=145514 u=nazmul n=ansible | changed: [172.16.7.131]
+2026-01-25 15:47:46,470 p=145514 u=nazmul n=ansible | TASK [setup_redis_exporter : Enable and Restart the Redis exporter service] **********************************************************************
+2026-01-25 15:47:50,722 p=145514 u=nazmul n=ansible | changed: [172.16.7.131]
+2026-01-25 15:47:50,747 p=145514 u=nazmul n=ansible | TASK [setup_redis_exporter : Allow SSH port on UFW] **********************************************************************************************
+2026-01-25 15:47:54,392 p=145514 u=nazmul n=ansible | changed: [172.16.7.131]
+2026-01-25 15:47:54,403 p=145514 u=nazmul n=ansible | TASK [setup_redis_exporter : Allow redis_exporter port through the UFW] **************************************************************************
+2026-01-25 15:47:57,453 p=145514 u=nazmul n=ansible | changed: [172.16.7.131]
+2026-01-25 15:47:57,500 p=145514 u=nazmul n=ansible | RUNNING HANDLER [setup_redis_exporter : Enable and Restart the Redis exporter service] ***********************************************************
+2026-01-25 15:47:58,887 p=145514 u=nazmul n=ansible | fatal: [172.16.7.131]: FAILED! => {"changed": false, "msg": "Unsupported parameters for (systemd) module: status. Supported parameters include: daemon_reexec, daemon_reload, enabled, force, masked, name, no_block, scope, state (daemon-reexec, daemon-reload, service, unit)."}
+2026-01-25 15:47:58,890 p=145514 u=nazmul n=ansible | PLAY RECAP ***************************************************************************************************************************************
+2026-01-25 15:47:58,890 p=145514 u=nazmul n=ansible | 172.16.7.131               : ok=8    changed=7    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
