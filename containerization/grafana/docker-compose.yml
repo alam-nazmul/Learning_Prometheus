@@ -1,0 +1,22 @@
+version: "3.9"
+
+services:
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data:/var/lib/grafana:rw
+    environment:
+      GF_SECURITY_ADMIN_USER: admin
+      GF_SECURITY_ADMIN_PASSWORD: Admin@123
+      GF_USERS_ALLOW_SIGN_UP: "false"
+    networks:
+      - monitoring
+
+networks:
+  monitoring:
+    driver: bridge
+
